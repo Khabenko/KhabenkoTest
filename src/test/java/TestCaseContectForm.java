@@ -1,16 +1,12 @@
-import java.io.File;
-import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
 
 import Model.BugetValue;
 import Model.ConectForm;
 import org.junit.*;
 import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.Select;
 import ru.yandex.qatools.allure.annotations.Title;
 
 
@@ -29,7 +25,7 @@ public class TestCaseContectForm {
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     }
 
-    @Title("This is our cool test suite")
+    @Title("s")
     @Test
     public void testUntitledTestCase() throws Exception {
         driver.get("http://firstbridge.io/");

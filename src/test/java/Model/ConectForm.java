@@ -1,8 +1,11 @@
 package Model;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import ru.yandex.qatools.allure.annotations.Attachment;
 
 import java.io.File;
 
@@ -59,6 +62,7 @@ public class ConectForm {
 
     public void verifySubmitMeasage(String meassege){
             assertEquals(meassege, driver.findElement(this.submitMeassage).getText());
+            makeScreenshot();
     }
 
     public void  fillBuget(BugetValue value){
@@ -76,6 +80,11 @@ public class ConectForm {
                 break;
         }
 
+    }
+
+    @Attachment(type = "image/png")
+    public byte[] makeScreenshot() {
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 
 }

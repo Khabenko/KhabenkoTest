@@ -7,6 +7,8 @@ import static org.junit.Assert.*;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import ru.yandex.qatools.allure.annotations.Features;
+import ru.yandex.qatools.allure.annotations.Stories;
 import ru.yandex.qatools.allure.annotations.Title;
 
 
@@ -25,9 +27,12 @@ public class TestCaseContectForm {
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     }
 
-    @Title("s")
+
+    @Title("[Contact form] Checking the \"Name\" field  (Contain Name and surname)")
+    @Features("[Contact form]")
+    @Stories("Positive")
     @Test
-    public void testUntitledTestCase() throws Exception {
+    public void testCaseP1() throws Exception {
         driver.get("http://firstbridge.io/");
 
         conectForm.fiilName("Test Test");
@@ -40,10 +45,104 @@ public class TestCaseContectForm {
         conectForm.pressSubmitButton();
 
         try {
-            conectForm.verifySubmitMeasage("Please fill the required fields");
+            conectForm.verifySubmitMeasage("we'll contact you as soon as possible");
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }
+    }
+
+    @Title("[Contact form] Sending reqest  with correct data")
+    @Features("[Contact form]")
+    @Stories("Positive")
+    @Test
+    public void testCaseP2() throws Exception {
+        driver.get("http://firstbridge.io/");
+
+        conectForm.fiilName("Test");
+        conectForm.fillBuget(BugetValue.LessThan15000$);
+        conectForm.fillEmail("Test@gmail.com");
+        conectForm.fillPosition("TestQA");
+        conectForm.fillDescription("Test");
+        //File from resources folder
+        conectForm.attachFile("test.txt");
+        conectForm.pressSubmitButton();
+
+        try {
+            conectForm.verifySubmitMeasage("we'll contact you as soon as possible");
+        } catch (Error e) {
+            verificationErrors.append(e.toString());
+        }
+    }
+
+    @Title("[Contact form] Checking the \"Name\" field  (use сyrillic)")
+    @Features("[Contact form]")
+    @Stories("Positive")
+    @Test
+    public void testCaseP3() throws Exception {
+        driver.get("http://firstbridge.io/");
+
+        conectForm.fiilName("Тест");
+        conectForm.fillBuget(BugetValue.LessThan15000$);
+        conectForm.fillEmail("Test@gmail.com");
+        conectForm.fillPosition("TestQA");
+        conectForm.fillDescription("Test");
+        //File from resources folder
+        conectForm.attachFile("test.txt");
+        conectForm.pressSubmitButton();
+
+        try {
+            conectForm.verifySubmitMeasage("we'll contact you as soon as possible");
+        } catch (Error e) {
+            verificationErrors.append(e.toString());
+        }
+    }
+
+    @Title("[Contact form] Checking the \"Select budge\" field 15000-50000 $")
+    @Features("[Contact form]")
+    @Stories("Positive")
+    @Test
+    public void testCaseP4() throws Exception {
+        driver.get("http://firstbridge.io/");
+
+        conectForm.fiilName("Test");
+        conectForm.fillBuget(BugetValue.Between15000$And50000$);
+        conectForm.fillEmail("Test@gmail.com");
+        conectForm.fillPosition("TestQA");
+        conectForm.fillDescription("Test");
+        //File from resources folder
+        conectForm.attachFile("test.txt");
+        conectForm.pressSubmitButton();
+
+        try {
+            conectForm.verifySubmitMeasage("we'll contact you as soon as possible");
+        } catch (Error e) {
+            verificationErrors.append(e.toString());
+        }
+    }
+
+    @Title("[Contact form] Checking the \"Select budge\" field 50000+ $")
+    @Features("[Contact form]")
+    @Stories("Positive")
+    @Test
+    public void testCaseP5() throws Exception {
+        driver.get("http://firstbridge.io/");
+
+        conectForm.fiilName("Test");
+        conectForm.fillBuget(BugetValue.MoreThan5000$);
+        conectForm.fillEmail("Test@gmail.com");
+        conectForm.fillPosition("TestQA");
+        conectForm.fillDescription("Test");
+        //File from resources folder
+        conectForm.attachFile("test.txt");
+        conectForm.pressSubmitButton();
+
+        try {
+            conectForm.verifySubmitMeasage("we'll contact you as soon as possible");
+        } catch (Error e) {
+            verificationErrors.append(e.toString());
+        }
+
+
     }
 
     @After

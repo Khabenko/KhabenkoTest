@@ -9,5 +9,8 @@
         <module name="KhabenkoTest" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="KhabenkoTest" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>

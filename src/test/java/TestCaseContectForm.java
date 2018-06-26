@@ -1,6 +1,9 @@
 import java.io.File;
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
+
+import Model.BugetValue;
+import Model.ConectForm;
 import org.junit.*;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
@@ -16,11 +19,13 @@ public class TestCaseContectForm {
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
+    private ConectForm conectForm;
 
     @Before
     public void setUp() throws Exception {
         System.setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
         driver = new ChromeDriver();
+        conectForm = new ConectForm(driver);
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     }
 
@@ -28,26 +33,18 @@ public class TestCaseContectForm {
     @Test
     public void testUntitledTestCase() throws Exception {
         driver.get("http://firstbridge.io/");
-        driver.findElement(By.name("name")).click();
-        driver.findElement(By.name("name")).clear();
-        driver.findElement(By.name("name")).sendKeys("Test Test");
-        driver.findElement(By.xpath("(//button[@type='button'])[4]")).click();
-        driver.findElement(By.xpath("(//button[@type='button'])[5]")).click();
-        driver.findElement(By.name("email")).click();
-        driver.findElement(By.name("email")).clear();
-        driver.findElement(By.name("email")).sendKeys("Test@gmail.com");
-        driver.findElement(By.name("position")).click();
-        driver.findElement(By.name("position")).clear();
-        driver.findElement(By.name("position")).sendKeys("TestQA");
-        driver.findElement(By.xpath("//textarea[@name='description']")).click();
-        driver.findElement(By.xpath("//textarea[@name='description']")).clear();
-        driver.findElement(By.xpath("//textarea[@name='description']")).sendKeys("Test");
-        driver.findElement(By.xpath("//div[@id='root']/div/div[4]/div/div/div[2]/div[2]/div[2]/form/div[2]/div/label")).click();
-        driver.findElement(By.id("file")).sendKeys(new File("src\\main\\resources\\test.txt").getAbsolutePath());
-        driver.findElement(By.xpath("//button[@type='submit']")).click();
+
+        conectForm.fiilName("Test Test");
+        conectForm.fillBuget(BugetValue.LessThan15000$);
+        conectForm.fillEmail("Test@gmail.com");
+        conectForm.fillPosition("TestQA");
+        conectForm.fillDescription("Test");
+        //File from resources folder
+        conectForm.attachFile("test.txt");
+        conectForm.pressSubmitButton();
 
         try {
-            assertEquals("Please fill the required fields", driver.findElement(By.xpath("//div[@id='root']/div/div[4]/div/div/div[2]/div[2]/div/div/div")).getText());
+            conectForm.verifySubmitMeasage("Please fill the required fields");
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }

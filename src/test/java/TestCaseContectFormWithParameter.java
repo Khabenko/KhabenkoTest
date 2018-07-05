@@ -8,7 +8,6 @@ import org.junit.runners.Parameterized;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import ru.yandex.qatools.allure.annotations.Features;
-import ru.yandex.qatools.allure.annotations.Issue;
 import ru.yandex.qatools.allure.annotations.Stories;
 import ru.yandex.qatools.allure.annotations.Title;
 
@@ -39,7 +38,6 @@ public class TestCaseContectFormWithParameter {
     @Title("[Contact form] Checking the \"Name\" field")
     @Features("[Contact form]")
     @Stories("Negativ")
-    @Issue("Test-1")
     @Test
     public void testCaseN1() throws Exception {
         driver.get("http://firstbridge.io/");

@@ -8,7 +8,6 @@ import static org.junit.Assert.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import ru.yandex.qatools.allure.annotations.Features;
-import ru.yandex.qatools.allure.annotations.Issue;
 import ru.yandex.qatools.allure.annotations.Stories;
 import ru.yandex.qatools.allure.annotations.Title;
 
@@ -32,7 +31,6 @@ public class TestCaseContectForm {
     @Title("[Contact form] Checking the \"Name\" field  (Contain Name and surname)")
     @Features("[Contact form]")
     @Stories("Positive")
-    @Issue("Test-1")
     @Test
     public void testCaseP1() throws Exception {
         driver.get("http://firstbridge.io/");
@@ -56,7 +54,6 @@ public class TestCaseContectForm {
     @Title("[Contact form] Sending reqest  with correct data")
     @Features("[Contact form]")
     @Stories("Positive")
-    @Issue("PAAS-2046")
     @Test
     public void testCaseP2() throws Exception {
         driver.get("http://firstbridge.io/");
@@ -100,8 +97,6 @@ public class TestCaseContectForm {
         }
     }
 
-
-    @Issue("PAAS-2046")
     @Title("[Contact form] Checking the \"Select budge\" field 15000-50000 $")
     @Features("[Contact form]")
     @Stories("Positive")

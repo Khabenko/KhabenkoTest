@@ -10,7 +10,7 @@
 
     <properties>
         <aspectj.version>1.7.4</aspectj.version>
-        <allure.version>1.5.4</allure.version>
+        <allure.version>2.6</allure.version>
     </properties>
 
     <build>

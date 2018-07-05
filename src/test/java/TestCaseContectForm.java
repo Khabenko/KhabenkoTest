@@ -49,7 +49,7 @@ public class TestCaseContectForm {
         try {
             conectForm.verifySubmitMeasage("we'll contact you as soon as possible");
         } catch (Error e) {
-            verificationErrors.append(e.toString());
+
         }
     }
 
@@ -146,7 +146,6 @@ public class TestCaseContectForm {
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }
-
 
     }
 

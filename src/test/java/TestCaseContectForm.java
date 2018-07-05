@@ -50,7 +50,7 @@ public class TestCaseContectForm {
             verificationErrors.append(e.toString());
         }
     }
-
+/*
     @Title("[Contact form] Sending reqest  with correct data")
     @Features("[Contact form]")
     @Stories("Positive")
@@ -141,9 +141,8 @@ public class TestCaseContectForm {
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }
-
-
     }
+    */
 
     @After
     public void tearDown() throws Exception {
